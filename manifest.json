@@ -1,0 +1,97 @@
+{
+  "manifest_version": 3,
+  "name": "Tripo Mesh Utility (Unofficial)",
+  "version": "2.4.0",
+  "description": "Unofficial. Finds holes, inverted faces and UV problems in Tripo meshes as they load, and repairs winding without touching textures.",
+  "background": {
+    "service_worker": "background.js",
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "mesh-tools@tripo.tools",
+      "strict_min_version": "121.0"
+    }
+  },
+  "action": {
+    "default_title": "Tripo Mesh Utility — toggle the panel",
+    "default_icon": {
+      "16": "icons/16.png",
+      "32": "icons/32.png",
+      "48": "icons/48.png",
+      "128": "icons/128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/16.png",
+    "32": "icons/32.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://tripo3d.ai/*",
+        "https://*.tripo3d.ai/*"
+      ],
+      "js": [
+        "lib/settings.js",
+        "lib/analyze.js",
+        "lib/inflate.js",
+        "lib/meshopt.js",
+        "lib/fbx.js",
+        "lib/parsers.js",
+        "lib/inspect.js",
+        "lib/repair.js",
+        "lib/verdict.js",
+        "lib/site.js",
+        "lib/viewer.js",
+        "lib/selftest.js",
+        "content.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": false
+    },
+    {
+      "matches": [
+        "https://tripo3d.ai/*",
+        "https://*.tripo3d.ai/*"
+      ],
+      "js": [
+        "page-hook.js",
+        "page-gl.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN",
+      "all_frames": false
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "page-hook.js",
+        "page-gl.js",
+        "lib/analyze.js",
+        "ui/overlay.css"
+      ],
+      "matches": [
+        "https://tripo3d.ai/*",
+        "https://*.tripo3d.ai/*"
+      ]
+    }
+  ],
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://tripo3d.ai/*",
+    "https://*.tripo3d.ai/*"
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "minimum_chrome_version": "111"
+}

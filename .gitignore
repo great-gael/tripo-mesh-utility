@@ -1,0 +1,49 @@
+# Im Archiv liegt nur, was zum Projekt gehoert: Quelltext, Tests, Fixtures.
+# Alles andere entsteht auf einem Rechner neu und hat hier nichts verloren.
+
+# --- Bauergebnis ---------------------------------------------------------
+# dist/ enthaelt das Paket des letzten Laufs. Wandert es mit, packt der
+# naechste Build es in sich selbst ein.
+dist/
+*.zip
+*.xpi
+web-ext-artifacts/
+
+# --- Abhaengigkeiten -----------------------------------------------------
+# Dieses Projekt hat bewusst keine. Der Eintrag steht hier, damit ein
+# versehentliches npm install nicht unbemerkt hundert Megabyte einbringt.
+node_modules/
+package-lock.json
+yarn.lock
+
+# --- Editoren und Werkzeuge ----------------------------------------------
+# Werkzeugkonfiguration ist Sache des jeweiligen Rechners, nicht des
+# Projekts. Rein persoenliche Eintraege stehen in .git/info/exclude, damit
+# dieses Archiv nichts ueber die Arbeitsumgebung eines Einzelnen verraet.
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# --- Betriebssystem ------------------------------------------------------
+.DS_Store
+._*
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# --- Fluechtiges ---------------------------------------------------------
+*.log
+npm-debug.log*
+.env
+.env.*
+
+# Ein HAR-Mitschnitt aus den Entwicklerwerkzeugen enthaelt jede gesendete
+# Kopfzeile, also auch Authorization und Cookies. Beim Untersuchen des
+# Netzwerkverkehrs entstehen solche Dateien schnell und liegen dann im
+# Projektordner herum. Diese Zeile kostet nichts und verhindert den Unfall.
+*.har

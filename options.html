@@ -1,0 +1,43 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mesh check thresholds</title>
+<link rel="stylesheet" href="ui/options.css">
+<main>
+  <h1>Mesh check thresholds</h1>
+  <p class="lede">A background prop and a hero asset don't deserve the same bar.
+    These decide when a mesh is called a re-roll rather than a patch job.</p>
+
+  <section>
+    <h2>Call it a re-roll when</h2>
+    <label><span>Ignore holes smaller than this many edges</span><input type="number" id="minHoleEdges" min="0" step="1"></label>
+    <label><span>More holes than</span><input type="number" id="rerollHoles" min="0" step="1"></label>
+    <label><span>A single hole reaches this many edges</span><input type="number" id="rerollHoleEdges" min="1" step="1"></label>
+    <label><span>Inverted faces exceed this share</span><input type="number" id="rerollFlipPercent" min="0" step="0.1"><em>%</em></label>
+    <label><span>Open edges exceed this share of all edges</span><input type="number" id="rerollOpenPercent" min="0" step="0.1"><em>%</em></label>
+    <label class="check"><input type="checkbox" id="failNonManifold"><span>Non-manifold edges count against a mesh</span></label>
+    <label><span>&hellip;but only above this share of all edges</span><input type="number" id="rerollNonManifoldPercent" min="0" step="0.01"><em>%</em></label>
+  </section>
+
+  <section>
+    <h2>Warn about</h2>
+    <label class="check"><input type="checkbox" id="warnStrayIslands"><span>Stray fragments floating off the model</span></label>
+    <label class="check"><input type="checkbox" id="warnNoUV"><span>Missing UVs</span></label>
+    <label><span>UV atlas used less than</span><input type="number" id="warnUVCoverage" min="0" max="100" step="1"><em>%</em></label>
+    <label><span>Triangle quality below this counts as a sliver</span><input type="number" id="sliverQ" min="0.001" max="0.5" step="0.005"></label>
+  </section>
+
+  <section>
+    <h2>Behaviour</h2>
+    <label class="check"><input type="checkbox" id="autoCheck"><span>Check meshes as they load</span></label>
+    <label class="check"><input type="checkbox" id="badgeCards"><span>Dot library thumbnails with their verdict</span></label>
+  </section>
+
+  <div class="bar">
+    <button id="save">Save thresholds</button>
+    <button id="reset" class="ghost">Restore defaults</button>
+    <span id="saved" aria-live="polite"></span>
+  </div>
+</main>
+<script src="lib/settings.js"></script>
+<script src="options.js"></script>

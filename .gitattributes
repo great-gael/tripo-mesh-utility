@@ -1,0 +1,15 @@
+# Zeilenenden im Archiv immer LF, auf jedem Betriebssystem gleich.
+# Ohne das wandelt Git unter Windows beim Auschecken auf CRLF um, und ein
+# frisch geklonter Baum haette andere Bytes als der, in dem geprueft wurde.
+* text=auto eol=lf
+
+# Die Fixtures sind echte GLB- und FBX-Dateien mit bekannten Defekten.
+# Eine Zeilenendenumwandlung darin zerstoert sie lautlos, und die Tests
+# schlagen dann an einer Stelle fehl, die mit der Ursache nichts zu tun hat.
+*.glb  binary
+*.fbx  binary
+*.FBX  binary
+*.png  binary
+*.jpg  binary
+*.zip  binary
+*.bin  binary
